@@ -23,6 +23,10 @@ function start({ port = 8080, host, domain, server } = {}) {
 
     wss.start(server);
   }
+
+  return {
+    wss: wss._wss,
+  }
 }
 
 module.exports = {

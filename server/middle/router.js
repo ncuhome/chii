@@ -38,7 +38,6 @@ module.exports = function (channelManager, domain) {
   channelManager.on('target_changed', () => (timestamp = now()));
 
   function createStatic(prefix, folder) {
-    console.log(path.resolve(__dirname, `${folder}`))
     router.get(`${prefix}/*`, async ctx => {
       await send(ctx, ctx.path.slice(prefix.length), {
         root: path.resolve(__dirname, `${folder}`),

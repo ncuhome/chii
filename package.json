@@ -1,6 +1,6 @@
 {
   "name": "mincu-chii",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "description": "Chrome devtools framework",
   "keywords": [
     "devtools"
@@ -65,5 +65,8 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "ws": "^7.2.3"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.3.0"
   }
 }

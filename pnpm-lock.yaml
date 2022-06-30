@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@koa/cors': ^3.3.0
   '@liriliri/lsla': ^0.2.0
   '@vercel/ncc': ^0.34.0
   babel-eslint: ^10.1.0
@@ -26,6 +27,9 @@ specifiers:
   webpack: ^4.42.1
   webpack-cli: ^3.3.11
   ws: ^7.2.3
+
+dependencies:
+  '@koa/cors': 3.3.0
 
 devDependencies:
   '@liriliri/lsla': 0.2.0
@@ -218,6 +222,13 @@ packages:
       '@jridgewell/resolve-uri': 3.0.8
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@koa/cors/3.3.0:
+    resolution: {integrity: sha512-lzlkqLlL5Ond8jb6JLnVVDmD2OPym0r5kvZlMgAWiS9xle+Q5ulw1T358oW+RVguxUkANquZQz82i/STIRmsqQ==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      vary: 1.1.2
+    dev: false
 
   /@liriliri/lsla/0.2.0:
     resolution: {integrity: sha512-9kPnHFLmpVw89c7RSBp+Bs4uzrvllyGW932cDm0DTnz3bkG7XQf5O/6sm18YB70pOsH3pVYdjI4037zTX4vn3A==}
@@ -6008,7 +6019,6 @@ packages:
   /vary/1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
-    dev: true
 
   /verror/1.10.0:
     resolution: {integrity: sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA=}

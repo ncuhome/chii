@@ -40,7 +40,7 @@ module.exports = function (channelManager, domain) {
   function createStatic(prefix, folder) {
     router.get(`${prefix}/*`, async ctx => {
       await send(ctx, ctx.path.slice(prefix.length), {
-        root: path.resolve(__dirname, `../..${folder}`),
+        root: path.resolve(__dirname, `./${folder}`),
         maxAge,
       });
     });
@@ -49,7 +49,7 @@ module.exports = function (channelManager, domain) {
   function createStaticFile(file) {
     router.get(`/${file}`, async ctx => {
       await send(ctx, file, {
-        root: path.resolve(__dirname, '../../public'),
+        root: path.resolve(__dirname, './public'),
         maxAge,
       });
     });

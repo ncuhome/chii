@@ -2,52 +2,60 @@
   "name": "mincu-chii",
   "version": "0.7.0",
   "description": "Chrome devtools framework",
-  "main": "./server/index.js",
-  "bin": {
-    "chii": "./bin/chii.js"
-  },
-  "files": [
-    "bin",
-    "public",
-    "server",
-    "test"
+  "keywords": [
+    "devtools"
   ],
-  "scripts": {
-    "ci": "npm run lint && npm run build && npm run es5",
-    "format": "npm run format:server && prettier 'src/**/*.ts' '*.{js,json}' 'bin/*.js' 'test/*.{html,json,js,css}' --write",
-    "format:server": "lsla prettier 'server/**/*.js' --write",
-    "build": "gulp clean && webpack --mode=production && npm run build:front_end",
-    "build:front_end": "npm run dev:front_end && gulp uglify",
-    "dev": "webpack --mode=development -w",
-    "dev:front_end": "cd devtools/devtools-frontend && gn gen out/Default && autoninja -C out/Default && lsla shx cp -R out/Default/gen/front_end ../../public",
-    "lint": "npm run lint:server && npm run lint:target",
-    "lint:server": "eslint server/**/*.js",
-    "lint:target": "tslint target/**/*.ts",
-    "init:front_end": "cd devtools && rm -rf devtools-frontend && gclient sync --with_branch_heads --verbose && cd ../ && python3 script/apply_all_patches.py patches/config.json",
-    "es5": "es-check es5 public/target.js"
+  "homepage": "https://github.com/ncuhome/chii#readme",
+  "bugs": {
+    "url": "https://github.com/ncuhome/chii/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ncuhome/chii.git"
   },
-  "keywords": [
-    "devtools"
-  ],
-  "author": "redhoodsu",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ncuhome/chii/issues"
+  "author": "redhoodsu",
+  "main": "./dist/index.js",
+  "bin": {
+    "chii": "./bin/chii.js"
   },
-  "homepage": "https://github.com/ncuhome/chii#readme",
+  "files": [
+    "bin",
+    "dist",
+    "test"
+  ],
+  "scripts": {
+    "build": "gulp clean && webpack --mode=production && npm run build:front_end",
+    "build:front_end": "npm run dev:front_end && gulp uglify",
+    "build:server": "ncc build server/index.js -m",
+    "ci": "npm run lint && npm run build && npm run es5",
+    "dev": "webpack --mode=development -w",
+    "dev:front_end": "cd devtools/devtools-frontend && gn gen out/Default && autoninja -C out/Default && lsla shx cp -R out/Default/gen/front_end ../../public",
+    "es5": "es-check es5 public/target.js",
+    "format": "npm run format:server && prettier 'src/**/*.ts' '*.{js,json}' 'bin/*.js' 'test/*.{html,json,js,css}' --write",
+    "format:server": "lsla prettier 'server/**/*.js' --write",
+    "init:front_end": "cd devtools && rm -rf devtools-frontend && gclient sync --with_branch_heads --verbose && cd ../ && python3 script/apply_all_patches.py patches/config.json",
+    "lint": "npm run lint:server && npm run lint:target",
+    "lint:server": "eslint server/**/*.js",
+    "lint:target": "tslint target/**/*.ts"
+  },
   "devDependencies": {
     "@liriliri/lsla": "^0.2.0",
+    "@vercel/ncc": "^0.34.0",
     "babel-eslint": "^10.1.0",
     "chobitsu": "^0.4.0",
+    "commander": "^5.0.0",
     "es-check": "^6.2.1",
     "eslint": "^6.8.0",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-uglify-es": "^3.0.0",
+    "handlebars": "^4.7.6",
+    "koa": "^2.11.0",
+    "koa-compress": "^4.0.1",
+    "koa-router": "^8.0.8",
+    "koa-send": "^5.0.0",
+    "licia": "^1.28.0",
     "ncp": "^2.0.0",
     "terser": "^5.10.0",
     "ts-loader": "^7.0.1",
@@ -55,16 +63,7 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
-  },
-  "dependencies": {
-    "commander": "^5.0.0",
-    "handlebars": "^4.7.6",
-    "koa": "^2.11.0",
-    "koa-compress": "^4.0.1",
-    "koa-router": "^8.0.8",
-    "koa-send": "^5.0.0",
-    "licia": "^1.28.0",
+    "webpack-cli": "^3.3.11",
     "ws": "^7.2.3"
   }
 }

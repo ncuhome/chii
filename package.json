@@ -1,5 +1,5 @@
 {
-  "name": "chii",
+  "name": "mincu-chii",
   "version": "0.7.0",
   "description": "Chrome devtools framework",
   "main": "./server/index.js",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liriliri/chii.git"
+    "url": "git+https://github.com/ncuhome/chii.git"
   },
   "keywords": [
     "devtools"
@@ -36,9 +36,9 @@
   "author": "redhoodsu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/liriliri/chii/issues"
+    "url": "https://github.com/ncuhome/chii/issues"
   },
-  "homepage": "https://github.com/liriliri/chii#readme",
+  "homepage": "https://github.com/ncuhome/chii#readme",
   "devDependencies": {
     "@liriliri/lsla": "^0.2.0",
     "babel-eslint": "^10.1.0",

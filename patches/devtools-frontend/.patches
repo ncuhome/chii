@@ -3,3 +3,4 @@ elements.patch
 network.patch
 application.patch
 sources.patch
+minify_i18n.patch

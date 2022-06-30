@@ -1,0 +1,208 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Kuss <kussssss@outlook.com>
+Date: Thu, 30 Jun 2022 10:29:17 +0800
+Subject: minify i18n
+
+
+diff --git a/config/gni/all_devtools_files.gni b/config/gni/all_devtools_files.gni
+index 855599eb6bfddb691f354aae58b5f36caabc1fbe..6951679e7fd28e05e17cc304ee49f443ac01462c 100644
+--- a/config/gni/all_devtools_files.gni
++++ b/config/gni/all_devtools_files.gni
+@@ -121,140 +121,13 @@ all_devtools_files = [
+ ]
+ 
+ lighthouse_locale_files = [
+-  "locales/ar-XB.json",
+-  "locales/ar.json",
+-  "locales/bg.json",
+-  "locales/ca.json",
+-  "locales/cs.json",
+-  "locales/da.json",
+-  "locales/de.json",
+-  "locales/el.json",
+-  "locales/en-GB.json",
+-  "locales/en-US.json",
+-  "locales/en-XA.json",
+-  "locales/en-XL.json",
+-  "locales/es-419.json",
+-  "locales/es.json",
+-  "locales/fi.json",
+-  "locales/fil.json",
+-  "locales/fr.json",
+-  "locales/he.json",
+-  "locales/hi.json",
+-  "locales/hr.json",
+-  "locales/hu.json",
+-  "locales/id.json",
+-  "locales/it.json",
+-  "locales/ja.json",
+-  "locales/ko.json",
+-  "locales/lt.json",
+-  "locales/lv.json",
+-  "locales/nl.json",
+-  "locales/no.json",
+-  "locales/pl.json",
+-  "locales/pt-PT.json",
+-  "locales/pt.json",
+-  "locales/ro.json",
+-  "locales/ru.json",
+-  "locales/sk.json",
+-  "locales/sl.json",
+-  "locales/sr-Latn.json",
+-  "locales/sr.json",
+-  "locales/sv.json",
+-  "locales/ta.json",
+-  "locales/te.json",
+-  "locales/th.json",
+-  "locales/tr.json",
+-  "locales/uk.json",
+-  "locales/vi.json",
+-  "locales/zh-HK.json",
+-  "locales/zh-TW.json",
+   "locales/zh.json",
+ ]
+ 
+ remote_devtools_locale_files = [
+-  "af.json",
+-  "am.json",
+-  "ar.json",
+-  "as.json",
+-  "az.json",
+-  "be.json",
+-  "bg.json",
+-  "bn.json",
+-  "bs.json",
+-  "ca.json",
+-  "cs.json",
+-  "cy.json",
+-  "da.json",
+-  "de.json",
+-  "el.json",
+-  "en-GB.json",
+-  "es-419.json",
+-  "es.json",
+-  "et.json",
+-  "eu.json",
+-  "fa.json",
+-  "fi.json",
+-  "fil.json",
+-  "fr-CA.json",
+-  "fr.json",
+-  "gl.json",
+-  "gu.json",
+-  "he.json",
+-  "hi.json",
+-  "hr.json",
+-  "hu.json",
+-  "hy.json",
+-  "id.json",
+-  "is.json",
+-  "it.json",
+-  "ja.json",
+-  "ka.json",
+-  "kk.json",
+-  "km.json",
+-  "kn.json",
+-  "ko.json",
+-  "ky.json",
+-  "lo.json",
+-  "lt.json",
+-  "lv.json",
+-  "mk.json",
+-  "ml.json",
+-  "mn.json",
+-  "mr.json",
+-  "ms.json",
+-  "my.json",
+-  "ne.json",
+-  "nl.json",
+-  "no.json",
+-  "or.json",
+-  "pa.json",
+-  "pl.json",
+-  "pt-PT.json",
+-  "pt.json",
+-  "ro.json",
+-  "ru.json",
+-  "si.json",
+-  "sk.json",
+-  "sl.json",
+-  "sq.json",
+-  "sr-Latn.json",
+-  "sr.json",
+-  "sv.json",
+-  "sw.json",
+-  "ta.json",
+-  "te.json",
+-  "th.json",
+-  "tr.json",
+-  "uk.json",
+-  "ur.json",
+-  "uz.json",
+-  "vi.json",
+   "zh-HK.json",
+-  "zh-TW.json",
+-  "zu.json",
+ ]
+ 
+ bundled_devtools_locale_files = [
+   "en-US.json",
+-  "zh.json",
+ ]
+diff --git a/config/gni/devtools_grd_files.gni b/config/gni/devtools_grd_files.gni
+index 6a59900fa674467934bd0ad53568c30cd7afd0c4..64f75c45214d838a2514620450eba11846725507 100644
+--- a/config/gni/devtools_grd_files.gni
++++ b/config/gni/devtools_grd_files.gni
+@@ -151,7 +151,6 @@ grd_files_release_sources = [
+   "front_end/core/host/host.js",
+   "front_end/core/i18n/i18n.js",
+   "front_end/core/i18n/locales/en-US.json",
+-  "front_end/core/i18n/locales/zh.json",
+   "front_end/core/platform/platform.js",
+   "front_end/core/protocol_client/protocol_client-legacy.js",
+   "front_end/core/protocol_client/protocol_client.js",
+diff --git a/front_end/entrypoints/js_app/BUILD.gn b/front_end/entrypoints/js_app/BUILD.gn
+index 8df0ac8414d16e4e50f7eb9cd459f072966dd1ce..211cc7f9d247c657631006ed718bd69d0737d1b1 100644
+--- a/front_end/entrypoints/js_app/BUILD.gn
++++ b/front_end/entrypoints/js_app/BUILD.gn
+@@ -24,7 +24,6 @@ devtools_entrypoint("js_main") {
+   deps = [
+     "../../core/common:bundle",
+     "../../core/host:bundle",
+-    "../../core/i18n:bundle",
+     "../../core/sdk:bundle",
+     "../../generated:protocol",
+     "../../ui/legacy/components/utils:bundle",
+diff --git a/front_end/entrypoints/main/main-meta.ts b/front_end/entrypoints/main/main-meta.ts
+index daef379c45bd74f94b91560cbd0f366b7beb86d7..3deea0448ecaa2502526b6c7e8bdef8492c2b8eb 100644
+--- a/front_end/entrypoints/main/main-meta.ts
++++ b/front_end/entrypoints/main/main-meta.ts
+@@ -217,8 +217,8 @@ const UIStrings = {
+ };
+ const str_ = i18n.i18n.registerUIStrings('entrypoints/main/main-meta.ts', UIStrings);
+ const i18nLazyString = i18n.i18n.getLazilyComputedLocalizedString.bind(undefined, str_);
+-let loadedMainModule: (typeof Main|undefined);
+-let loadedInspectorMainModule: (typeof InspectorMain|undefined);
++let loadedMainModule: (typeof Main | undefined);
++let loadedInspectorMainModule: (typeof InspectorMain | undefined);
+ 
+ async function loadMainModule(): Promise<typeof Main> {
+   if (!loadedMainModule) {
+@@ -732,7 +732,7 @@ Common.Settings.registerSettingExtension({
+ 
+ function createLazyLocalizedLocaleSettingText(localeString: string): () => Common.UIString.LocalizedString {
+   return (): Common.UIString.LocalizedString =>
+-             i18n.i18n.getLocalizedLanguageRegion(localeString, i18n.DevToolsLocale.DevToolsLocale.instance());
++    i18n.i18n.getLocalizedLanguageRegion(localeString, i18n.DevToolsLocale.DevToolsLocale.instance());
+ }
+ 
+ function createOptionForLocale(localeString: string): Common.Settings.SettingExtensionOption {
+@@ -762,7 +762,7 @@ Common.Settings.registerSettingExtension({
+       title: i18nLazyString(UIStrings.browserLanguage),
+       text: i18nLazyString(UIStrings.browserLanguage),
+     },
+-    ...filterLocalesForSettings().map(locale => createOptionForLocale(locale)),
++    ...[].map(locale => createOptionForLocale(locale)),
+   ],
+   reloadRequired: true,
+ });

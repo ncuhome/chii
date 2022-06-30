@@ -12,7 +12,7 @@ function start({ port = 8080, host, domain, server } = {}) {
   const app = new Koa();
   const wss = new WebSocketServer();
 
-  app.use(compress()).use(router(wss.channelManager, domain));
+  app.use().use(router(wss.channelManager, domain));
 
   if (server) {
     server.on('request', app.callback());

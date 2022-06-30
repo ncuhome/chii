@@ -18,7 +18,7 @@ function start({ port = 8080, host, domain, server } = {}) {
     server.on('request', app.callback());
     wss.start(server);
   } else {
-    util.log(`starting server at ${prefix}${domain}`);
+    util.log(`starting chii server at ${prefix}${domain}`);
     const server = app.listen(port, host);
 
     wss.start(server);

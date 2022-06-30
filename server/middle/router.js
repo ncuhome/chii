@@ -38,9 +38,10 @@ module.exports = function (channelManager, domain) {
   channelManager.on('target_changed', () => (timestamp = now()));
 
   function createStatic(prefix, folder) {
+    console.log(path.resolve(__dirname, `${folder}`))
     router.get(`${prefix}/*`, async ctx => {
       await send(ctx, ctx.path.slice(prefix.length), {
-        root: path.resolve(__dirname, `./${folder}`),
+        root: path.resolve(__dirname, `${folder}`),
         maxAge,
       });
     });
@@ -55,8 +56,8 @@ module.exports = function (channelManager, domain) {
     });
   }
 
-  createStatic('/front_end', '/public/front_end');
-  createStatic('/test', '/test');
+  createStatic('/front_end', './public/front_end');
+  createStatic('/test', '../test');
   createStaticFile('target.js');
   createStaticFile('index.js');
 

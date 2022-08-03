@@ -30,6 +30,9 @@ function start({ port = 8080, host, domain, server } = {}) {
 
   return {
     wss: wss._wss,
+    onTargetChanged: (cb) => {
+      wss.channelManager.on('target_changed', cb);
+    },
   }
 }
 
